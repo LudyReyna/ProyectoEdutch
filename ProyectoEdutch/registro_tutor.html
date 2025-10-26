@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tutorías - TutorMatch Tutor</title>
+  <link rel="stylesheet" href="../css/navbar.css" />
+  <link rel="stylesheet" href="../css/registro_tutor.css" />
+</head>
+<body>
+
+  <!-- 🔸 Navbar -->
+  <header class="navbar">
+    <div class="logo">TutorMatch</div>
+    <nav>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="principal_tutor.html">Inicio</a></li>
+        <li><a href="registro_tutor.html" class="active">Tutorías</a></li>
+        <li><a href="alumnos_inscri.html">Alumnos</a></li>
+        <li><a href="chat_tutor.html">Chat</a></li>
+        <li><a href="perfil_tutor.html">Perfil</a></li>
+        <li><a href="#" id="logout">Cerrar sesión</a></li>
+      </ul>
+    </nav>
+    <div class="menu-toggle" id="menuToggle">&#9776;</div>
+  </header>
+
+  <!-- 🔸 Contenido principal -->
+  <main class="main-container">
+    <section class="header-section">
+      <h1>Gestión de Tutorías</h1>
+      <p>Registra y consulta tus tutorías programadas.</p>
+    </section>
+
+    <!-- 🔹 Formulario para nueva tutoría -->
+    <section class="form-section">
+      <h2>Registrar nueva tutoría</h2>
+      <form id="formTutoria">
+        <div class="form-group">
+          <label for="nombreEstudiante">Nombre del estudiante</label>
+          <input type="text" id="nombreEstudiante" required />
+        </div>
+        <div class="form-group">
+          <label for="curso">Curso</label>
+          <input type="text" id="curso" required />
+        </div>
+        <div class="form-group">
+          <label for="tema">Tema tratado</label>
+          <input type="text" id="tema" required />
+        </div>
+        <div class="form-group">
+          <label for="fecha">Fecha</label>
+          <input type="date" id="fecha" required />
+        </div>
+        <div class="form-group">
+          <label for="estado">Estado</label>
+          <select id="estado">
+            <option>Programada</option>
+            <option>Completada</option>
+            <option>Cancelada</option>
+          </select>
+        </div>
+        <button type="submit" class="btn-guardar">Guardar Tutoría</button>
+      </form>
+    </section>
+
+    <!-- 🔹 Tabla de tutorías -->
+    <section class="table-section">
+      <h2>Mis Tutorías Registradas</h2>
+      <table id="tablaTutorias">
+        <thead>
+          <tr>
+            <th>Estudiante</th>
+            <th>Curso</th>
+            <th>Tema</th>
+            <th>Fecha</th>
+            <th>Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Filas generadas dinámicamente -->
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="../js/navbar.js"></script>
+  <script src="../js/registro_tutor.js"></script>
+</body>
+</html>

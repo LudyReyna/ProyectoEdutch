@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EduMatch - Registro</title>
+  <link rel="stylesheet" href="css/registro.css" />
+</head>
+<body>
+  <div class="auth-container">
+    <div class="auth-box">
+      <div class="logo">
+        <img src="img/logo.png" alt="EduMatch" />
+        <h1>EduMatch</h1>
+      </div>
+
+      <h2>Crear Cuenta</h2>
+      <p>Regístrate con tus credenciales UCV</p>
+
+      <form id="registerForm">
+        <div class="input-group">
+          <label for="nombre">Nombre completo</label>
+          <input type="text" id="nombre" placeholder="Ej. Juan Pérez" required />
+        </div>
+
+        <div class="input-group">
+          <label for="email">Correo institucional</label>
+          <input type="email" id="email" placeholder="usuario@ucvvirtual.edu.pe" required />
+        </div>
+
+        <div class="input-group">
+          <label for="password">Contraseña</label>
+          <input type="password" id="password" placeholder="********" required />
+        </div>
+
+        <div class="input-group">
+          <label for="rol">Soy:</label>
+          <select id="rol" required>
+            <option value="">Selecciona una opción</option>
+            <option value="tutor">Tutor</option>
+            <option value="tutorado">Alumno</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn">Registrarse</button>
+
+        <p class="switch">¿Ya tienes cuenta? <a href="login.html">Inicia sesión</a></p>
+      </form>
+    </div>
+  </div>
+
+  <!-- ✅ Las rutas a los scripts -->
+  <script type="module" src="./firebase/firebase.js"></script>
+  <script type="module" src="./js/registro.js"></script>
+</body>
+</html>

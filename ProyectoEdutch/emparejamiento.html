@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Emparejamiento con IA - EduMatch</title>
+  <link rel="stylesheet" href="css/emparejamiento.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="logo">
+      <img src="img/logo.png" alt="EduMatch" />
+      <h1>EduMatch</h1>
+    </div>
+    <nav>
+      <a href="principal_alumno.html">Inicio</a>
+      <a href="tutorias.html">Tutorías</a>
+      <a href="emparejamiento.html" class="active">Buscar Tutor</a>
+      <a href="chat.html">Chat</a>
+      <a href="perfil.html">Perfil</a>
+      <button id="logoutBtn">Cerrar Sesión</button>
+    </nav>
+  </header>
+
+  <main class="match-container">
+    <h2>Emparejamiento Inteligente con IA</h2>
+    <p>El sistema analizará tu perfil y te asignará el tutor o tutorado más compatible.</p>
+
+    <form id="formMatch">
+      <div class="form-group">
+        <label for="rol">Soy:</label>
+        <select id="rol" required>
+          <option value="">Selecciona una opción</option>
+          <option value="tutor">Tutor</option>
+          <option value="tutorado">Tutorado</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="curso">Curso:</label>
+        <input type="text" id="curso" placeholder="Ej. Álgebra Lineal" required />
+      </div>
+
+      <div class="form-group">
+        <label for="nivel">Nivel Académico:</label>
+        <select id="nivel" required>
+          <option value="">Selecciona nivel</option>
+          <option value="Básico">Básico</option>
+          <option value="Intermedio">Intermedio</option>
+          <option value="Avanzado">Avanzado</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="horario">Disponibilidad Horaria:</label>
+        <input type="text" id="horario" placeholder="Ej. Lunes y Miércoles 3-5pm" required />
+      </div>
+
+      <button type="submit" class="btn-buscar">🔍 Buscar Coincidencias con IA</button>
+    </form>
+
+    <div id="resultadoIA" class="resultado">
+      <div class="progress-bar">
+        <div id="progress"></div>
+      </div>
+      <p id="status">Analizando coincidencias...</p>
+      <div id="matchInfo" class="match-info hidden"></div>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 EduMatch - Universidad César Vallejo</p>
+  </footer>
+
+  <script src="js/emparejamiento.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chat - Tutorías</title>
+  <link rel="stylesheet" href="../css/chat.css" />
+</head>
+<body>
+  <header>
+    <h1>💬 Chat Tutor–Tutorado</h1>
+    <button id="logoutBtn">Cerrar sesión</button>
+  </header>
+
+  <main class="chat-container">
+    <aside class="contactos">
+      <h3>Conversaciones</h3>
+      <ul id="listaContactos">
+        <li data-id="chat1" data-nombre="Luis Herrera" class="activo">Luis Herrera (Tutor)</li>
+        <li data-id="chat2" data-nombre="Ana Ramírez">Ana Ramírez (Tutorada)</li>
+        <li data-id="chat3" data-nombre="María Torres">María Torres (Tutor)</li>
+      </ul>
+    </aside>
+
+    <section class="chat">
+      <div class="chat-header">
+        <h2 id="nombreChat">Luis Herrera</h2>
+      </div>
+
+      <div id="mensajes" class="mensajes"></div>
+
+      <form id="formMensaje" class="input-area">
+        <input type="text" id="mensajeInput" placeholder="Escribe un mensaje..." required />
+        <button type="submit">Enviar</button>
+      </form>
+    </section>
+  </main>
+
+  <!-- Importar el script del chat -->
+  <script type="module" src="../js/chat.js"></script>
+</body>
+</html>
