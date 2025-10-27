@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perfil del Estudiante - EduMatch</title>
+  <link rel="stylesheet" href="css/perfil.css">
+</head>
+<body>
+<header class="header">
+  <div class="logo">
+    <img src="img/logo.png" alt="EduMatch">
+    <h1>EduMatch</h1>
+  </div>
+  <nav>
+    <a href="principal_alumno.html">Inicio</a>
+    <a href="tutorias.html">Tutorías</a>
+    <a href="chat.html">Chat</a>
+    <a href="perfil.html" class="active">Perfil</a>
+    <button id="logoutBtn">Cerrar Sesión</button>
+  </nav>
+</header>
+
+<main class="profile-container">
+  <section class="profile-card">
+    <div class="profile-info">
+      <img src="assets/img/default-user.png" alt="Foto del estudiante" class="profile-pic">
+      <h2 id="nombre">Cargando...</h2>
+      <p id="rol" class="rol">Rol</p>
+    </div>
+
+    <div class="academic-info">
+      <h3>Información Académica</h3>
+      <ul>
+        <li>
+          <strong>Carrera:</strong> 
+          <span id="carrera-text">Sin especificar</span>
+          <input id="carrera-input" class="hidden" type="text" placeholder="Ej. Ingeniería de Sistemas">
+        </li>
+        <li>
+          <strong>Curso:</strong> 
+          <span id="curso-text">Sin especificar</span>
+          <input id="curso-input" class="hidden" type="text" placeholder="Ej. Álgebra Lineal">
+        </li>
+        <li>
+          <strong>Nivel:</strong>
+          <span id="nivel-text">Sin especificar</span>
+          <select id="nivel-input" class="hidden">
+            <option value="">Selecciona nivel</option>
+            <option value="Básico">Básico</option>
+            <option value="Intermedio">Intermedio</option>
+            <option value="Avanzado">Avanzado</option>
+          </select>
+        </li>
+        <li>
+          <strong>Disponibilidad:</strong>
+          <span id="disponibilidad-text">Sin especificar</span>
+          <input id="disponibilidad-input" class="hidden" type="text" placeholder="Ej. Lunes y Miércoles 3-5pm">
+        </li>
+      </ul>
+    </div>
+
+    <div class="actions">
+      <button id="editBtn">Editar Perfil</button>
+      <button id="saveBtn" class="hidden">Guardar Cambios</button>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>© 2025 EduMatch - Universidad César Vallejo</p>
+</footer>
+
+<script type="module" src="./js/perfil.js"></script>
+</body>
+</html>
