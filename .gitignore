@@ -1,0 +1,6 @@
+# Ignorar configuración privada
+firebaseConfig.js
+.env
+config/
+*.key
+*.env
