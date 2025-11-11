@@ -1,8 +1,10 @@
+
 // ========================
 // 📦 IMPORTACIONES
 // ========================
 import express from "express";
 import cors from "cors";
+import helmet from "helmet"; // 🛡️ Protección adicional por cabeceras HTTP
 import path from "path";
 import { fileURLToPath } from "url";
 import dotenv from "dotenv";
@@ -18,7 +20,9 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+
+// 🔒 Evitar exponer información de versión de Express
+app.disable("x-powered-by");
 
 // ========================
 // ⚙️ CONFIGURAR CORS DE FORMA SEGURA
@@ -26,17 +30,17 @@ const PORT = process.env.PORT || 3000;
 const allowedOrigins = [
   "http://localhost:5173",           // Desarrollo (Vite)
   "http://localhost:3000",           // Servidor local
-  "https://edumatch.vercel.app",     // Dominio de producción (ajusta según tu caso)
+  "https://edumatch.vercel.app",     // Producción (ajusta tu dominio real)
 ];
 
 const corsOptions = {
   origin: (origin, callback) => {
-    // Permitir solicitudes sin origen (por ejemplo, Postman o herramientas locales)
+    // Permitir solicitudes sin origen (Postman, herramientas locales)
     if (!origin) return callback(null, true);
     if (allowedOrigins.includes(origin)) {
       return callback(null, true);
     } else {
-      return callback(new Error("Origen no permitido por CORS"));
+      return callback(new Error("🌐 Origen no permitido por CORS"));
     }
   },
   methods: ["GET", "POST", "PUT", "DELETE"],
@@ -44,7 +48,11 @@ const corsOptions = {
   credentials: true, // si usas cookies o tokens
 };
 
-app.use(cors(corsOptions)); // ✅ Seguridad mejorada
+// ========================
+// 🧩 MIDDLEWARES
+// ========================
+app.use(cors(corsOptions));   // ✅ Seguridad mejorada
+app.use(helmet());            // 🛡️ Cabeceras de seguridad automáticas
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -57,7 +65,7 @@ console.log("📂 Sirviendo archivos desde:", path.resolve(__dirname, "../public
 // ========================
 // 🔗 RUTAS DE API
 // ========================
-app.use("/api/ia", iaRoutes); // Ruta para IA (si existe)
+app.use("/api/ia", iaRoutes); // 🧠 Ruta para IA
 
 // ========================
 // 🌐 RUTAS HTML SIN .html
@@ -76,7 +84,7 @@ const pages = [
   "paginaPrincipal", // 👈 añadida
 ];
 
-// Genera automáticamente rutas limpias
+// Generar rutas limpias automáticamente
 pages.forEach((page) => {
   app.get(`/${page}`, (req, res) => {
     const filePath = path.resolve(__dirname, `../public/${page}.html`);
@@ -111,10 +119,5 @@ app.get("/api/usuarios", async (req, res) => {
   }
 });
 
-// ========================
-// 🚀 INICIAR SERVIDOR
-// ========================
-app.listen(PORT, () => {
-  console.log(`✅ Servidor corriendo en http://localhost:${PORT}`);
-});
+// =========
 
