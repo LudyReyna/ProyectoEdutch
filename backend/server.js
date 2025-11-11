@@ -18,12 +18,33 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 // ========================
-// ⚙️ MIDDLEWARES
+// ⚙️ CONFIGURAR CORS DE FORMA SEGURA
 // ========================
-app.use(cors());
+const allowedOrigins = [
+  "http://localhost:5173",           // Desarrollo (Vite)
+  "http://localhost:3000",           // Servidor local
+  "https://edumatch.vercel.app",     // Dominio de producción (ajusta según tu caso)
+];
+
+const corsOptions = {
+  origin: (origin, callback) => {
+    // Permitir solicitudes sin origen (por ejemplo, Postman o herramientas locales)
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    } else {
+      return callback(new Error("Origen no permitido por CORS"));
+    }
+  },
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true, // si usas cookies o tokens
+};
+
+app.use(cors(corsOptions)); // ✅ Seguridad mejorada
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -52,11 +73,11 @@ const pages = [
   "emparejamiento",
   "chat_tutor",
   "chat",
-  "paginaPrincipal" // 👈 añadida
+  "paginaPrincipal", // 👈 añadida
 ];
 
 // Genera automáticamente rutas limpias
-pages.forEach(page => {
+pages.forEach((page) => {
   app.get(`/${page}`, (req, res) => {
     const filePath = path.resolve(__dirname, `../public/${page}.html`);
     res.sendFile(filePath, (err) => {
@@ -79,7 +100,7 @@ app.get("/", (req, res) => {
 app.get("/api/usuarios", async (req, res) => {
   try {
     const snapshot = await db.collection("usuarios").get();
-    const usuarios = snapshot.docs.map(doc => ({
+    const usuarios = snapshot.docs.map((doc) => ({
       id: doc.id,
       ...doc.data(),
     }));
@@ -96,3 +117,4 @@ app.get("/api/usuarios", async (req, res) => {
 app.listen(PORT, () => {
   console.log(`✅ Servidor corriendo en http://localhost:${PORT}`);
 });
+
