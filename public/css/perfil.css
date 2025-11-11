@@ -1,0 +1,151 @@
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: #f9fafc;
+  color: #333;
+}
+
+/* HEADER */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #e63946;
+  color: #fff;
+  padding: 15px 40px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo img {
+  width: 45px;
+}
+
+.logo h1 {
+  font-size: 1.4rem;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 10px;
+  font-weight: 500;
+  transition: opacity 0.3s ease;
+}
+
+nav a:hover,
+nav a.active {
+  text-decoration: underline;
+}
+
+#logoutBtn {
+  background: #fff;
+  color: #e63946;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+#logoutBtn:hover {
+  background: #ffe5e5;
+}
+
+/* PERFIL */
+.profile-container {
+  display: flex;
+  justify-content: center;
+  margin: 40px 0;
+}
+
+.profile-card {
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+  padding: 40px 50px;
+  width: 90%;
+  max-width: 700px;
+  text-align: center;
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-pic {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #e63946;
+}
+
+.rol {
+  background: #ffe5e5;
+  color: #e63946;
+  padding: 5px 15px;
+  border-radius: 15px;
+  margin-top: 10px;
+  font-weight: 600;
+}
+
+.academic-info {
+  margin-top: 30px;
+  text-align: left;
+}
+
+.academic-info h3 {
+  color: #e63946;
+  margin-bottom: 15px;
+}
+
+.academic-info ul {
+  list-style: none;
+  padding: 0;
+}
+
+.academic-info li {
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+.actions {
+  margin-top: 30px;
+}
+
+.actions button {
+  background: #e63946;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  margin: 0 5px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.3s ease;
+}
+
+.actions button:hover {
+  background: #c92e3a;
+}
+
+.hidden {
+  display: none;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #fff;
+  border-top: 1px solid #eee;
+  color: #777;
+  font-size: 0.9rem;
+}

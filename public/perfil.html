@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil del Estudiante - EduMatch</title>
+    <link rel="stylesheet" href="css/perfil.css">
+</head>
+<body>
+<header class="header">
+    <div class="logo">
+        <img src="img/logo.png" alt="EduMatch">
+        <h1>EduMatch</h1>
+    </div>
+    <nav>
+        <a href="principal_alumno.html">Inicio</a>
+        <a href="tutorias.html">Tutorías</a>
+        <a href="chat.html">Chat</a>
+        <a href="perfil.html" class="active">Perfil</a>
+        <button id="logoutBtn">Cerrar Sesión</button>
+    </nav>
+</header>
+
+<main class="profile-container">
+    <section class="profile-card">
+        <div class="profile-info">
+            <img src="assets/img/default-user.png" alt="Foto del estudiante" class="profile-pic">
+            <h2 id="nombre">Juan Pérez</h2>
+            <p class="rol">Alumno</p>
+        </div>
+
+    <div class="academic-info">
+        <h3>Información Académica</h3>
+        <ul>
+            <li><strong>Carrera:</strong> Ingeniería de Sistemas</li>
+            <li><strong>Cursos:</strong> Programación II, Bases de Datos, Inteligencia Artificial</li>
+            <li><strong>Rendimiento:</strong> 16.8 / 20</li>
+            <li><strong>Disponibilidad:</strong> Lunes a Viernes - 5:00pm a 8:00pm</li>
+        </ul>
+    </div>
+
+    <div class="actions">
+        <button id="editBtn">Editar Perfil</button>
+        <button id="saveBtn" class="hidden">Guardar Cambios</button>
+    </div>
+    </section>
+</main>
+
+<footer>
+    <p>© 2025 EduMatch - Universidad César Vallejo</p>
+</footer>
+
+<script type="module" src="./js/perfil.js"></script>
+</body>
+</html>

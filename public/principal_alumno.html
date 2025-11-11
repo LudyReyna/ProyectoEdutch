@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inicio - TutorMatch Estudiante</title>
+  <link rel="stylesheet" href="../css/navbar.css" />
+  <link rel="stylesheet" href="../css/principal_alumno.css" />
+</head>
+<body>
+
+  <!-- 🔸 Navbar -->
+  <header class="navbar">
+    <div class="logo">EduMatch</div>
+    <nav>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="principal_alumno.html" class="active">Inicio</a></li>
+        <li><a href="tutorias.html">Tutorías</a></li>
+        <li><a href="emparejamiento.html">Buscar Tutor</a></li>
+        <li><a href="chat.html">Chat</a></li>
+        <li><a href="perfil.html">Perfil</a></li>
+        <li><a href="#" id="logout">Cerrar sesión</a></li>
+      </ul>
+    </nav>
+    <div class="menu-toggle" id="menuToggle">&#9776;</div>
+  </header>
+
+  <!-- 🔸 Contenido principal -->
+  <main class="main-container">
+    <section class="welcome-section">
+      <h1>¡Bienvenido a EduMatch!</h1>
+      <p>Aquí podrás gestionar tus tutorías, conectarte con tutores y seguir tu progreso académico.</p>
+      <button id="btnEmparejar">Buscar Tutor</button>
+    </section>
+
+    <section class="cards-section">
+      <div class="card">
+        <h3>Mis Tutorías</h3>
+        <p>Consulta tus próximas tutorías y temas tratados.</p>
+        <a href="tutorias.html" class="btn">Ver Tutorías</a>
+      </div>
+
+      <div class="card">
+        <h3>Tutores</h3>
+        <p>Encuentra al tutor ideal para tus necesidades académicas.</p>
+        <a href="emparejamiento.html" class="btn">Buscar Tutor</a>
+      </div>
+
+      <div class="card">
+        <h3>Chat</h3>
+        <p>Comunícate directamente con tu tutor asignado.</p>
+        <a href="chat.html" class="btn">Abrir Chat</a>
+      </div>
+    </section>
+  </main>
+
+  <script src=".../js/navbar.js"></script>
+  <script src="../js/principal_alumno.js"></script>
+</body>
+</html>

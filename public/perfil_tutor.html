@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Perfil del Tutor - TutorMatch</title>
+  <link rel="stylesheet" href="../css/navbar.css" />
+  <link rel="stylesheet" href="../css/perfil_tutor.css" />
+</head>
+<body>
+  <!-- 🔸 Navbar -->
+  <header class="navbar">
+    <div class="logo">TutorMatch</div>
+    <nav>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="principal_tutor.html">Inicio</a></li>
+        <li><a href="alumnos_inscri.html">Tutorías</a></li>
+        <li><a href="chat_tutor.html">Chat</a></li>
+        <li><a href="perfil_tutor.html" class="active">Perfil</a></li>
+        <li><a href="#" id="logout">Cerrar sesión</a></li>
+      </ul>
+    </nav>
+    <div class="menu-toggle" id="menuToggle">&#9776;</div>
+  </header>
+
+  <!-- 🔸 Contenido -->
+  <main class="perfil-container">
+    <section class="perfil-card">
+      <img src="img/tutor_avatar.png" alt="Foto del Tutor" class="perfil-foto">
+      <h2>Juan Pérez</h2>
+      <p><strong>Especialidad:</strong> Matemáticas Avanzadas</p>
+      <p><strong>Correo:</strong> juan.perez@universidad.edu</p>
+      <p><strong>Disponibilidad:</strong> Lunes a Viernes, 8:00 - 16:00</p>
+    </section>
+
+    <section class="info-extra">
+      <h3>Estadísticas</h3>
+      <ul>
+        <li>Tutorías completadas: <strong>45</strong></li>
+        <li>Estudiantes asignados: <strong>12</strong></li>
+        <li>Promedio de valoración: ⭐ 4.8 / 5</li>
+      </ul>
+
+      <button class="btn-editar">Editar perfil</button>
+    </section>
+  </main>
+
+  <script src="../js/navbar.js"></script>
+  <script src="../js/perfil_tutor.js"></script>
+</body>
+</html>

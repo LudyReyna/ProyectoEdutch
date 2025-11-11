@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Registro | EduMatch</title>
+  <link rel="stylesheet" href="./css/registro.css" />
+</head>
+<body>
+  <main class="auth-card">
+    <h1>Registro en EduMatch</h1>
+
+    <form id="registerForm" novalidate>
+      <!-- 🧩 DATOS GENERALES -->
+      <div class="form-group">
+        <label for="nombre">Nombre completo</label>
+        <input id="nombre" type="text" placeholder="Ej. Ludy Torres" required />
+      </div>
+
+      <div class="form-group">
+        <label for="email">Correo institucional</label>
+        <input id="email" type="email" placeholder="usuario@ucvvirtual.edu.pe" required />
+      </div>
+
+      <div class="form-group">
+        <label for="password">Contraseña</label>
+        <input id="password" type="password" minlength="6" required />
+      </div>
+
+      <div class="form-group">
+        <label for="edad">Edad</label>
+        <input id="edad" type="number" min="15" max="99" placeholder="Ej. 21" required />
+      </div>
+
+      <div class="form-group">
+        <label for="carrera">Carrera profesional</label>
+        <input id="carrera" type="text" placeholder="Ej. Ingeniería de Sistemas" required />
+      </div>
+
+      <div class="form-group">
+        <label for="rol">Rol</label>
+        <select id="rol" required>
+          <option value="">Selecciona tu rol</option>
+          <option value="tutor">Tutor</option>
+          <option value="tutorado">Tutorado</option>
+        </select>
+      </div>
+
+      <!-- 🔸 CAMPOS PARA TUTORES -->
+      <fieldset id="tutorFields" class="hidden">
+        <legend>Datos para Tutores</legend>
+
+        <div class="form-group">
+          <label for="cursoTutor">Curso que dictas</label>
+          <input id="cursoTutor" type="text" placeholder="Ej. Álgebra Lineal" />
+        </div>
+
+        <div class="form-group">
+          <label for="nivelTutor">Nivel de enseñanza</label>
+          <select id="nivelTutor">
+            <option value="">Selecciona nivel</option>
+            <option value="Básico">Básico</option>
+            <option value="Intermedio">Intermedio</option>
+            <option value="Avanzado">Avanzado</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="diasTutor">Días disponibles</label>
+          <select id="diasTutor">
+            <option value="">Selecciona tus días</option>
+            <option value="Lunes, Miércoles y Viernes">Lunes, Miércoles y Viernes</option>
+            <option value="Martes y Jueves">Martes y Jueves</option>
+            <option value="Sábado">Sábado</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="horaTutor">Horario disponible</label>
+          <select id="horaTutor">
+            <option value="">Selecciona horario</option>
+            <option value="8:00 a.m. - 11:00 a.m.">8:00 a.m. - 11:00 a.m.</option>
+            <option value="11:00 a.m. - 2:00 p.m.">11:00 a.m. - 2:00 p.m.</option>
+            <option value="2:00 p.m. - 5:00 p.m.">2:00 p.m. - 5:00 p.m.</option>
+            <option value="5:00 p.m. - 8:00 p.m.">5:00 p.m. - 8:00 p.m.</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="modalidadTutor">Modalidad de tutoría</label>
+          <select id="modalidadTutor">
+            <option value="">Selecciona modalidad</option>
+            <option value="Presencial">Presencial</option>
+            <option value="Virtual">Virtual</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="tipoEnsenanzaTutor">Tipo de enseñanza que ofreces</label>
+          <select id="tipoEnsenanzaTutor" required>
+            <option value="">Selecciona tipo</option>
+            <option value="Individual">Individual</option>
+            <option value="Grupal">Grupal</option>
+            <option value="Ambos">Ambos</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="metodoTutor">Método de enseñanza</label>
+          <select id="metodoTutor">
+            <option value="">Selecciona</option>
+            <option value="Visual">Visual (diagramas, videos, esquemas)</option>
+            <option value="Auditivo">Auditivo (explicaciones orales, debates)</option>
+            <option value="Kinestésico">Kinestésico (ejercicios, prácticas)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="experiencia">Experiencia o logros académicos</label>
+          <textarea id="experiencia" rows="3" placeholder="Ej. 2 años dictando tutorías de Matemática..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="objetivoTutor">Objetivo como tutor</label>
+          <input id="objetivoTutor" type="text" placeholder="Ej. Ayudar a mejorar el rendimiento académico" />
+        </div>
+      </fieldset>
+
+      <!-- 🔹 CAMPOS PARA TUTORADOS -->
+      <fieldset id="tutoradoFields" class="hidden">
+        <legend>Datos para Tutorados</legend>
+
+        <div class="form-group">
+          <label for="cursosInteres">Cursos de interés</label>
+          <input id="cursosInteres" type="text" placeholder="Ej. Álgebra, Programación, Estadística" />
+        </div>
+
+        <div class="form-group">
+          <label for="nivelTutorado">Nivel actual</label>
+          <select id="nivelTutorado">
+            <option value="">Selecciona nivel</option>
+            <option value="Básico">Básico</option>
+            <option value="Intermedio">Intermedio</option>
+            <option value="Avanzado">Avanzado</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="tipoAprendizaje">Tipo de aprendizaje preferido</label>
+          <select id="tipoAprendizaje">
+            <option value="">Selecciona</option>
+            <option value="Visual">Visual (prefiero diagramas o videos)</option>
+            <option value="Auditivo">Auditivo (prefiero explicaciones habladas)</option>
+            <option value="Kinestésico">Kinestésico (aprendo practicando)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="diasTutorado">Días disponibles</label>
+          <select id="diasTutorado">
+            <option value="">Selecciona tus días</option>
+            <option value="Lunes, Miércoles y Viernes">Lunes, Miércoles y Viernes</option>
+            <option value="Martes y Jueves">Martes y Jueves</option>
+            <option value="Sábado">Sábado</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="horaTutorado">Horario disponible</label>
+          <select id="horaTutorado">
+            <option value="">Selecciona horario</option>
+            <option value="8:00 a.m. - 11:00 a.m.">8:00 a.m. - 11:00 a.m.</option>
+            <option value="11:00 a.m. - 2:00 p.m.">11:00 a.m. - 2:00 p.m.</option>
+            <option value="2:00 p.m. - 5:00 p.m.">2:00 p.m. - 5:00 p.m.</option>
+            <option value="5:00 p.m. - 8:00 p.m.">5:00 p.m. - 8:00 p.m.</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="modalidadTutorado">Modalidad preferida</label>
+          <select id="modalidadTutorado">
+            <option value="">Selecciona modalidad</option>
+            <option value="Presencial">Presencial</option>
+            <option value="Virtual">Virtual</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="objetivoTutorado">Objetivo de aprendizaje</label>
+          <input id="objetivoTutorado" type="text" placeholder="Ej. Reforzar temas para el examen final" />
+        </div>
+      </fieldset>
+
+      <button type="submit" class="btn-primary">Registrar cuenta</button>
+
+      <!-- 🧾 Aquí se mostrarán los mensajes -->
+      <div id="mensajeStatus" class="mensaje" style="display:none;"></div>
+
+      <p class="hint">¿Ya tienes cuenta? <a href="/login.html">Inicia sesión</a></p>
+    </form>
+  </main>
+
+  <script type="module" src="/js/registro.js"></script>
+</body>
+</html>

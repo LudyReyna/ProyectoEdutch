@@ -1,0 +1,312 @@
+/* ==========================
+ESTILOS GENERALES
+========================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #fff;
+    color: #333;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+h1, h2, h3 {
+    color: #e63946;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ==========================
+    NAVBAR
+========================== */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff5f5;
+    padding: 15px 60px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espacio entre filas y columnas */
+}
+
+.logo img {
+    width: 50px;
+    height: 45px;
+}
+
+.logo h1 {
+    font-size: 1.5rem;
+    color: #e63946;
+    font-weight: 700;
+}
+
+.navbar nav a {
+  margin: 0 15px;
+  font-weight: 500;
+  color: #333;
+  transition: color 0.3s ease;
+}
+
+.navbar nav a:hover {
+  color: #e63946;
+}
+
+.btn-register {
+  padding: 8px 18px;
+  background: #e63946;
+  color: #fff;
+  border-radius: 20px;
+  transition: background 0.3s ease;
+}
+
+.btn-register:hover {
+  background: #c92e3a;
+}
+
+/* ==========================
+   HERO (sección principal)
+========================== */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 100px 80px;
+  background: linear-gradient(90deg, #fff 50%, #e63946 50%);
+  color: #fff;
+}
+
+.hero-content {
+  width: 50%;
+  text-align: right;
+}
+
+.hero-content h2 {
+  font-size: 2rem;
+  color: #fff;
+  margin-bottom: 8px;
+  position: relative;
+  left: 890px; /* Ajusta el valor según lo que necesites */
+  text-align: justify;
+}
+
+.hero-content p {
+  color: #f9f9f9;
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  position: relative;
+  left: 890px; /* Ajusta el valor según lo que necesites */
+  text-align: justify;
+}
+
+.hero-content button {
+  padding: 12px 25px;
+  background: #fff;
+  color: #e63946;
+  border: none;
+  border-radius: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  left: 550px;
+}
+
+.hero-content button:hover {
+  background: #ffeaea;
+}
+
+.hero-img {
+    width: 45%;
+    max-width: 400px;
+    position: absolute;
+    left: 60; /* Cambia a 'left: 0;' para moverla al lado izquierdo */
+    padding-left: 50px;
+  
+
+}
+
+/* ==========================
+   CÓMO FUNCIONA
+========================== */
+.funciona {
+  text-align: center;
+  padding: 80px 60px;
+  background: #fafafa;
+}
+
+.funciona h2 {
+  margin-bottom: 40px;
+  color: #e63946;
+}
+
+.steps {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 150px; /*separacion*/
+}
+
+.step {
+  width: 250px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.step:hover {
+  transform: translateY(-5px);
+}
+
+.step span {
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  background: #e63946;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 50%;
+  line-height: 35px;
+  margin-bottom: 10px;
+}
+
+/* ==========================
+   BENEFICIOS
+========================== */
+.beneficios {
+  text-align: center;
+  padding: 80px 40px;
+  background: #fff5f5;
+}
+
+.beneficios h2 {
+  margin-bottom: 40px;
+  color: #e63946;
+  font-size: 2rem;
+}
+
+.beneficios ul {
+  list-style: none;
+}
+
+.beneficios li {
+  background: #fff;
+  margin: 10px auto;
+  padding: 20px 25px;
+  width: 300px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease;
+  font-size: 1.2rem;
+  /*text-align: justify;*/
+}
+
+.beneficios li:hover {
+  transform: scale(1.05);
+}
+
+/* ==========================
+   NOSOTROS
+========================== */
+.nosotros {
+  background: #e63946;
+  color: #fff;
+  padding: 20px 20px;
+  font-size: 1.5rem;
+  font-style: italic;
+}
+
+.nosotros h2{
+  font-size: 3rem;
+  color: #fff;
+text-align: center;
+}
+
+.nosotros p{
+    color: #f9f9f9;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+/* ==========================
+   FOOTER
+========================== */
+footer {
+  background: #1d1d1d;
+  color: #fff;
+  padding: 40px 60px;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.footer-links p{
+position: relative;
+  right: 800px;
+}
+
+.footer-links a {
+  display: block;
+  color: #ccc;
+  margin-top: 5px;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+  position: relative;
+  right: 800px;
+}
+
+.footer-links a:hover {
+  color: #fff;
+}
+
+.footer-logo h3 {
+  color: #e63946;
+  font-size: 1.9rem;
+  position: relative;
+  left: 90px;
+}
+
+/* ==========================
+   RESPONSIVE
+========================== */
+@media (max-width: 900px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    padding: 40px 20px;
+  }
+
+  .hero-content, .hero-img {
+    width: 100%;
+  }
+
+  .steps {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .beneficios li {
+    width: 80%;
+  }
+}

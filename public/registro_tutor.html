@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Solicitudes de Tutoría | TutorMatch</title>
+  <link rel="stylesheet" href="../css/navbar.css" />
+  <link rel="stylesheet" href="../css/registro_tutor.css" />
+</head>
+<body>
+
+  <!-- 🔹 Navbar -->
+  <header class="navbar">
+    <div class="logo">TutorMatch</div>
+    <nav>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="principal_tutor.html">Inicio</a></li>
+        <li><a href="registro_tutor.html" class="active">Tutorías</a></li>
+        <li><a href="alumnos_inscri.html">Alumnos</a></li>
+        <li><a href="chat_tutor.html">Chat</a></li>
+        <li><a href="perfil_tutor.html">Perfil</a></li>
+        <li><a href="#" id="logout">Cerrar sesión</a></li>
+      </ul>
+    </nav>
+    <div class="menu-toggle" id="menuToggle">&#9776;</div>
+  </header>
+
+  <!-- 🔸 Contenido principal -->
+  <main class="main-container">
+    <section class="header-section">
+      <h1>📩 Solicitudes de Tutoría Recibidas</h1>
+      <p>Gestiona las solicitudes que te envían los tutorados. Puedes aceptarlas o rechazarlas según tu disponibilidad.</p>
+    </section>
+
+    <!-- 🔹 Tabla de solicitudes -->
+    <section class="table-section">
+      <h2>Solicitudes Pendientes</h2>
+      <table id="tablaSolicitudes" class="tabla-estilizada">
+        <thead>
+          <tr>
+            <th>Tutorado</th>
+            <th>Curso</th>
+            <th>Modalidad</th>
+            <th>Días</th>
+            <th>Horario</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Se llenará dinámicamente desde JS -->
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <script type="module" src="../js/navbar.js"></script>
+  <script type="module" src="../js/registro_tutor.js"></script>
+</body>
+</html>
