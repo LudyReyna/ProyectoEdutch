@@ -13,9 +13,12 @@ export async function crearChat({
   dias,
   horario,
 }) {
-  try {
-    // 🔹 Crear un ID único, ordenando correos y limpiando puntos
-    const chatId = [tutorEmail, tutoradoEmail].sort().join("_").replace(/\./g, "_");
+try {
+  // 🔹 Crear un ID único, ordenando correos y limpiando puntos
+  const chatId = [tutorEmail, tutoradoEmail]
+    .sort((a, b) => a.localeCompare(b)) // ✅ Comparación explícita
+    .join("_")
+    .replace(/\./g, "_");
 
     // 🔹 Crear documento en la raíz de la colección
     await setDoc(doc(db, "chats", chatId), {
@@ -36,3 +39,4 @@ export async function crearChat({
     console.error("❌ Error creando chat:", error);
   }
 }
+
