@@ -18,7 +18,7 @@ try {
   const chatId = [tutorEmail, tutoradoEmail]
     .sort((a, b) => a.localeCompare(b)) // ✅ Comparación explícita
     .join("_")
-    .replace(/\./g, "_");
+    .replaceAll(".", "_");
 
     // 🔹 Crear documento en la raíz de la colección
     await setDoc(doc(db, "chats", chatId), {
@@ -39,4 +39,5 @@ try {
     console.error("❌ Error creando chat:", error);
   }
 }
+
 
