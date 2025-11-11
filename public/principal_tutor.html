@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inicio - TutorMatch Tutor</title>
+
+  <!-- ✅ RUTAS CORREGIDAS (sin ../) -->
+  <link rel="stylesheet" href="css/navbar.css" />
+  <link rel="stylesheet" href="css/principal_tutor.css" />
+</head>
+<body>
+
+  <!-- 🔸 Navbar -->
+  <header class="navbar">
+    <div class="logo">EduMatch</div>
+    <nav>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="principal_tutor.html" class="active">Inicio</a></li>
+        <li><a href="registro_tutor.html">Tutorías</a></li>
+        <li><a href="alumnos_inscri.html">Alumnos</a></li>
+        <li><a href="chat_tutor.html">Chat</a></li>
+        <li><a href="perfil_tutor.html">Perfil</a></li>
+        <li><a href="#" id="logout">Cerrar sesión</a></li>
+      </ul>
+    </nav>
+    <div class="menu-toggle" id="menuToggle">&#9776;</div>
+  </header>
+
+  <!-- 🔸 Contenido principal -->
+  <main class="main-container">
+    <section class="welcome-section">
+      <h1>¡Bienvenido, Tutor!</h1>
+      <p>Administra tus tutorías, revisa tus tutorados y comunícate fácilmente.</p>
+      <button id="btnNuevaTutoria">Registrar nueva tutoría</button>
+    </section>
+
+    <section class="cards-section">
+      <div class="card">
+        <h3>Mis Tutorías</h3>
+        <p>Consulta tus sesiones programadas y registra nuevas tutorías.</p>
+        <a href="registro_tutor.html" class="btn">Ver Tutorías</a>
+      </div>
+
+      <div class="card">
+        <h3>Alumnos</h3>
+        <p>Visualiza los estudiantes que tienes asignados y su progreso.</p>
+        <a href="alumnos_inscri.html" class="btn">Ver Tutorados</a>
+      </div>
+
+      <div class="card">
+        <h3>Chat</h3>
+        <p>Comunícate directamente con tus tutorados asignados.</p>
+        <a href="chat_tutor.html" class="btn">Abrir Chat</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ✅ RUTAS JS CORRECTAS -->
+  <script src="js/navar.js"></script>
+  <script src="js/principal_tutor.js"></script>
+</body>
+</html>

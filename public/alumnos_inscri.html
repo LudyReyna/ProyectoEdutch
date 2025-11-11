@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mis Tutorados - TutorMatch</title>
+  <link rel="stylesheet" href="../css/navbar.css" />
+  <link rel="stylesheet" href="../CSS/alumnos_inscri.css" />
+</head>
+<body>
+
+  <!-- 🔸 Navbar -->
+  <header class="navbar">
+    <div class="logo">TutorMatch</div>
+    <nav>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="principal_tutor.html">Inicio</a></li>
+        <li><a href="registro_tutor.html">Tutorías</a></li>
+        <li><a href="alumnos_inscri.html" class="active">Alumnos</a></li>
+        <li><a href="chat_tutor.html">Chat</a></li>
+        <li><a href="perfil_tutor.html">Perfil</a></li>
+        <li><a href="#" id="logout">Cerrar sesión</a></li>
+      </ul>
+    </nav>
+    <div class="menu-toggle" id="menuToggle">&#9776;</div>
+  </header>
+
+  <!-- 🔸 Contenido principal -->
+  <main class="main-container">
+    <section class="header-section">
+      <h1>Mis Tutorados</h1>
+      <p>Consulta los estudiantes asignados y su estado de tutoría.</p>
+    </section>
+
+    <section class="table-section">
+      <table id="tablaTutorados">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Curso</th>
+            <th>Estado</th>
+            <th>Acción</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Filas generadas por JS -->
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="../js/navbar.js"></script>
+  <script src="../js/alumnos_inscri.js"></script>
+</body>
+</html>
