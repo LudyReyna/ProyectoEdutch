@@ -1,0 +1,7 @@
+organization=ludyreyna
+projectKey=LudyReyna_ProyectoEdutch
+serverUrl=https://sonarcloud.io
+serverVersion=8.0.0.76642
+dashboardUrl=https://sonarcloud.io/dashboard?id=LudyReyna_ProyectoEdutch
+ceTaskId=AZqVB6f4G_C5ANixGAOj
+ceTaskUrl=https://sonarcloud.io/api/ce/task?id=AZqVB6f4G_C5ANixGAOj

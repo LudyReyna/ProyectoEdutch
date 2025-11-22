@@ -4,4 +4,3 @@ firebaseConfig.js
 config/
 *.key
 *.env
-git rm --cached serviceAccountKey.json
