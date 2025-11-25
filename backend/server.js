@@ -14,12 +14,16 @@ dotenv.config();
 // ========================
 // 📁 CONFIGURACIÓN BASE
 // ========================
+const PORT = process.env.PORT || 3000;   // ✅ NECESARIO PARA JEST Y PRODUCCIÓN
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
 app.disable("x-powered-by"); // Oculta la versión de Express
 
+// Exportamos la app antes de configurar el servidor
+export default app;  // ✅ Super important para Jest
 
 // ========================
 // ⚙️ MIDDLEWARES
@@ -43,6 +47,8 @@ app.use(
   })
 );
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // ========================
 // 🌐 SERVIR FRONTEND
@@ -53,7 +59,7 @@ console.log("📂 Sirviendo archivos desde:", path.resolve(__dirname, "../public
 // ========================
 // 🔗 RUTAS DE API
 // ========================
-app.use("/api/ia", iaRoutes); // Ruta para IA (si existe)
+app.use("/api/ia", iaRoutes);
 
 // ========================
 // 🌐 RUTAS HTML SIN .html
@@ -69,10 +75,9 @@ const pages = [
   "emparejamiento",
   "chat_tutor",
   "chat",
-  "paginaPrincipal" // 👈 añadida
+  "paginaPrincipal"
 ];
 
-// Genera automáticamente rutas limpias
 pages.forEach(page => {
   app.get(`/${page}`, (req, res) => {
     const filePath = path.resolve(__dirname, `../public/${page}.html`);
@@ -85,7 +90,7 @@ pages.forEach(page => {
   });
 });
 
-// Página raíz → página principal
+// Página raíz
 app.get("/", (req, res) => {
   res.sendFile(path.resolve(__dirname, "../public/paginaPrincipal.html"));
 });
@@ -108,8 +113,11 @@ app.get("/api/usuarios", async (req, res) => {
 });
 
 // ========================
-// 🚀 INICIAR SERVIDOR
+// 🚀 INICIAR SERVIDOR (SOLO SI NO ES TEST)
 // ========================
-app.listen(PORT, () => {
-  console.log(`✅ Servidor corriendo en http://localhost:${PORT}`);
-});
+if (process.env.NODE_ENV !== "test") {
+  app.listen(PORT, () => {
+    console.log(`✅ Servidor corriendo en http://localhost:${PORT}`);
+  });
+}
+

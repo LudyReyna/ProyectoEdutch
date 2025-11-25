@@ -10,16 +10,26 @@ dotenv.config();
 const router = express.Router();
 
 // ========================
-// 🔑 CONFIGURACIÓN GEMINI
+// 🔑 FUNCIÓN EXPORTADA PARA MOCK EN TESTS
 // ========================
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+export const getIAModel = () => {
+  try {
+    const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+    return genAI.getGenerativeModel({
+      model: "models/gemini-2.0-flash",
+      generationConfig: { responseMimeType: "application/json" },
+    });
+  } catch (err) {
+    console.error("❌ Error creando modelo IA:", err);
+    return null;
+  }
+};
 
-const model = genAI.getGenerativeModel({
-  model: "models/gemini-2.0-flash", // ✅ Modelo estable
-  generationConfig: {
-    responseMimeType: "application/json", // Fuerza salida JSON
-  },
-});
+// ========================
+// 🔥 MODELO IA REAL
+// (los tests lo reemplazarán con mock)
+// ========================
+export let model = getIAModel();
 
 // ========================
 // 📘 EMPAREJAMIENTO POST
@@ -35,13 +45,17 @@ router.post("/emparejamiento", async (req, res) => {
     console.log("📩 Datos recibidos:", req.body);
 
     // 🔍 Buscar tutores reales
-    const tutoresSnap = await db.collection("usuarios").where("rol", "==", "tutor").get();
-    if (tutoresSnap.empty) return res.status(404).json({ error: "No hay tutores registrados." });
+    const tutoresSnap = await db.collection("usuarios")
+      .where("rol", "==", "tutor")
+      .get();
+
+    if (tutoresSnap.empty) {
+      return res.status(404).json({ error: "No hay tutores registrados." });
+    }
 
     const tutores = tutoresSnap.docs.map(doc => doc.data());
     console.log(`✅ ${tutores.length} tutores encontrados.`);
 
-    // 🧠 Crear contexto con tutores reales
     const contexto = tutores.map(t => ({
       nombre: t.nombre,
       email: t.email,
@@ -54,11 +68,8 @@ router.post("/emparejamiento", async (req, res) => {
       experiencia: t.experiencia,
     }));
 
-    // 💬 Prompt de IA estructurado
     const prompt = `
-Eres una IA que empareja tutorados con tutores reales de una universidad.
-
-Selecciona el tutor más compatible con el siguiente estudiante:
+Eres una IA que empareja tutorados con tutores reales.
 
 TUTORADO:
 - Curso: ${curso}
@@ -71,7 +82,7 @@ TUTORADO:
 TUTORES DISPONIBLES:
 ${JSON.stringify(contexto, null, 2)}
 
-Responde exclusivamente en formato JSON con este modelo exacto:
+Responde solo JSON:
 {
   "nombre": "",
   "email": "",
@@ -83,57 +94,61 @@ Responde exclusivamente en formato JSON con este modelo exacto:
 }
 `;
 
+    // ========================
+    // ❗ VALIDACIÓN PARA TESTS
+    // ========================
+    if (!model || typeof model.generateContent !== "function") {
+      return res.status(500).json({ error: "Error al inicializar modelo IA" });
+    }
+
     console.log("🧠 Enviando prompt a Gemini...");
     const result = await model.generateContent(prompt);
-
     const text = result.response.text().trim();
+
     console.log("✅ Respuesta cruda de Gemini:", text);
 
-    // 🧩 Intentar parsear la respuesta
     let match;
     try {
       match = JSON.parse(text);
     } catch (err) {
-      console.warn("⚠️ La IA no devolvió JSON puro, texto recibido:", text);
-      return res.status(500).json({ error: "Respuesta IA no es JSON válido", raw: text });
+      console.warn("⚠️ La IA no devolvió JSON puro:", text);
+      return res.status(500).json({
+        error: "Respuesta IA no es JSON válido",
+        raw: text,
+      });
     }
 
-    // 🎨 Formato final profesional
     const respuestaFormateada = `
-<div style="
-  background:#ffffff;
-  border-radius:15px;
-  box-shadow:0 4px 15px rgba(0,0,0,0.1);
-  padding:20px 25px;
-  font-family:'Poppins',sans-serif;
-  max-width:600px;
-  margin:20px auto;
-  color:#333;
-">
-  <h3 style="color:#e63946;text-align:center;margin-bottom:15px;">🎯 Tutor sugerido</h3>
-  <p><strong>👩‍🏫 Nombre:</strong> ${match.nombre || "No identificado"}</p>
-  <p><strong>📘 Curso:</strong> ${match.curso || "-"}</p>
-  <p><strong>🎓 Nivel:</strong> ${match.nivel || "-"}</p>
-  <p><strong>💻 Modalidad:</strong> ${match.modalidad || "-"}</p>
-  <p><strong>📧 Contacto:</strong> <a href="mailto:${match.email}" style="color:#e63946;">${match.email}</a></p>
-  <p><strong>📊 Compatibilidad:</strong> ${match.compatibilidad || "-"}</p>
-  <p><strong>🗣️ Motivo:</strong> ${match.razon || "Sin descripción"}</p>
-</div>
-`;
+<div style="background:#fff;border-radius:15px;padding:20px;
+box-shadow:0 4px 15px rgba(0,0,0,0.1);font-family:Poppins;">
+  <h3 style="color:#e63946;text-align:center;">🎯 Tutor sugerido</h3>
+  <p><strong>Nombre:</strong> ${match.nombre}</p>
+  <p><strong>Curso:</strong> ${match.curso}</p>
+  <p><strong>Nivel:</strong> ${match.nivel}</p>
+  <p><strong>Modalidad:</strong> ${match.modalidad}</p>
+  <p><strong>Compatibilidad:</strong> ${match.compatibilidad}</p>
+  <p><strong>Razón:</strong> ${match.razon}</p>
+</div>`;
 
-    // 🔁 Enviar respuesta al frontend
     res.json({ respuesta: respuestaFormateada, raw: match });
 
-  } catch (error) {
-    console.error("❌ Error general en IA:", error);
-    res.status(500).json({
-      error: "Error interno en la IA",
-      detalle: error.message,
-    });
+  } catch (err) {
+    console.error("❌ Error general IA:", err);
+    res.status(500).json({ error: "Error interno en la IA" });
   }
+
 });
 
+// ========================
+// 👌 Setter para tests
+// ========================
+export const __setTestModel = (newModel) => {
+  model = newModel;
+};
+
 export default router;
+
+
 
 
 
