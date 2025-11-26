@@ -1,13 +1,14 @@
 export default {
     testEnvironment: "node",
     transform: {},
-    testPathIgnorePatterns: [
-        "/node_modules/",
-        "/coverage/",
-    ],
-        modulePathIgnorePatterns: [
-        "/coverage/",
+    modulePathIgnorePatterns: [
+        "<rootDir>/public/",
+        "<rootDir>/coverage/",
+        "<rootDir>/backend/coverage/",
+        "<rootDir>/coverage-report/",
+        "<rootDir>/backend/coverage-report/"
     ],
 };
+
 
 
