@@ -1,5 +1,13 @@
 export default {
     testEnvironment: "node",
-    transform: {}
+    transform: {},
+    testPathIgnorePatterns: [
+        "/node_modules/",
+        "/coverage/",
+    ],
+        modulePathIgnorePatterns: [
+        "/coverage/",
+    ],
 };
+
 
