@@ -27,7 +27,7 @@ jobs:
 
       - name: Run tests with coverage
         working-directory: ./backend
-        run: NODE_OPTIONS=--experimental-vm-modules npm test -- --coverage
+        run: npm test -- --coverage
 
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@v2
