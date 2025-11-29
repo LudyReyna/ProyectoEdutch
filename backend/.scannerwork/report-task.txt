@@ -3,5 +3,5 @@ projectKey=LudyReyna_ProyectoEdutch
 serverUrl=https://sonarcloud.io
 serverVersion=8.0.0.76802
 dashboardUrl=https://sonarcloud.io/dashboard?id=LudyReyna_ProyectoEdutch
-ceTaskId=AZq94vc5NiLQuoM0wr5f
-ceTaskUrl=https://sonarcloud.io/api/ce/task?id=AZq94vc5NiLQuoM0wr5f
+ceTaskId=AZq-8wPXhdlk1AwS4EjV
+ceTaskUrl=https://sonarcloud.io/api/ce/task?id=AZq-8wPXhdlk1AwS4EjV
